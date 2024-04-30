@@ -1,16 +1,16 @@
 #!/bin/bash
-# If compiling a script that does not require HepMC output, comment out the last 5 lines.
+# If compiling a script that does not require HepMC output, 
+# comment out the last 5 lines.
 
 # Line-by-line breakdown:
-# 11-12) Get file name from user; 15) run compiler; 
+# 13) Set filename from argument; 15) run compiler; 
 # 16) pass path for to-be-compiled file to compiler; 
 # 17) specify output; 18) reference Pythia default config files;
 # 19) include Pythia default flags; 20) reference Pythia libraries;
 # 21-22) specifically look for pythia8.so;
 # 23-26) repeat the process from lines 20-22 for HepMC; 27) ???
 
-echo Enter file name, excluding the extension:
-read filename
+filename=$1
 
 $CXX \
 	$PWD/$filename.cc \
