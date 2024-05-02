@@ -1,0 +1,21 @@
+import model ../../DVMuReint/RPVMSSM_UFO/RPVMSSM_UFO/
+define q = g u c d s u~ c~ d~ s~ b t b~ t~ h01 h2 h3 h+ h-
+define p = g u c d s u~ c~ d~ s~ b b~
+generate p p > mur- mur+ /q
+output auto
+launch
+./param_card_default.dat
+set nevents 20000
+set time_of_flight 0.0
+set small_width_treatment 1e-30
+set mass 1000013
+set mass 2000013
+set decay 2000013 6.500000e-15
+launch
+set mass 1000013 400
+set mass 2000013 400
+set decay 2000013 6.500000e-15
+launch
+set mass 1000013 500
+set mass 2000013 500
+set decay 2000013 6.500000e-15
