@@ -24,7 +24,7 @@ while [ -d $mg_dir ]; do
         	run_dir='smu'$mass'gev'$decay'ns'
         	gunzip $PWD/$mg_dir/Events/$run_dir/unweighted_events.lhe.gz
 		echo LHEF unzipped.
-		sed -i "s/Beams:LHEF = /path/to/LHEF/f.lhe   ! the LHEF to read from/Beams:LHEF = $PWD/$mg_dir/Events/$run_dir/unweighted_events.lhe/" main42.cmnd
+		sed -i "s|Beams:LHEF = /path/to/LHEF/f.lhe   ! the LHEF to read from|Beams:LHEF = $PWD/$mg_dir/Events/$run_dir/unweighted_events.lhe|" main42.cmnd
 		./main42 main42.cmnd out.hepmc > $PWD/$mg_dir/Events/$run_dir/out_$run_dir.log
 		echo Hadronization complete for $run_dir.
 	done
