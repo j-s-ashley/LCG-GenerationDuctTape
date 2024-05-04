@@ -56,6 +56,7 @@ for ((mass=$mass;mass<=mass_end;mass=$mass+100)); do
 	echo $run_dir LHEF unzipped.
 	cp main42.cmnd $full_run_dir/main42.cmnd
 	sed -i "s|Beams:LHEF = /path/to/LHEF/f.lhe   ! the LHEF to read from|Beams:LHEF = $PWD/$mg_dir/Events/$run_dir/unweighted_events.lhe|" $full_run_dir/main42.cmnd
+	sed -i "s|Main:numberOfEvents = 3|Main:numberOfEvents = $nevents|" $full_run_dir/main42.cmnd
 	./main42 $full_run_dir/main42.cmnd $full_run_dir/out.hepmc > $full_run_dir/out_$run_dir.log
 	echo Hadronization complete for $run_dir.
 done
