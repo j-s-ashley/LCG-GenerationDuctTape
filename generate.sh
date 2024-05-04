@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # --- Header --- #
+#submission_dir='/eos/home-j/jashley/LLP_Sleptons_RPV_SUSY/generate_events/submission'
+submission_dir='/eos/home-j/jashley/bubbles/LCG_GenerationDuctTape/submission'
 nevents=3
 model_repo='https://github.com/lawrenceleejr/DVMuReint.git'
 model_dir="$PWD/DVMuReint/RPVMSSM_UFO/RPVMSSM_UFO/"
@@ -25,8 +27,14 @@ proc_card_name='auto_proc_card.dat'
 # --- End of Header --- #
 
 source /cvmfs/sft.cern.ch/lcg/views/LCG_102b_ATLAS_6/x86_64-centos9-gcc11-opt/setup.sh
+echo LCG sourced.
 
-echo LCG sourced. Cloning model from $model_repo.
+echo Staging-in submission directory.
+eos cp $submission_dir/* .
+echo Stage-in complete. Current directory contains:
+ls
+
+echo Cloning model from $model_repo.
 git clone $model_repo
 
 echo Cloning complete. Creating $proc_card_name with
@@ -62,3 +70,8 @@ for ((mass=$mass;mass<=mass_end;mass=$mass+100)); do
 done
 
 echo Full generation process done.
+
+echo Staging-out output.
+tar -czf PROC_RPVMSSM_UFO_0
+eos cp output.tgz $submission_dir
+echo Stage-out complete.
