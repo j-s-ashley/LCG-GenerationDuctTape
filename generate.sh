@@ -40,12 +40,13 @@ total_dirs=$(( mass_dirs * decay_dirs ))
 total_events=$(( total_dirs * nevents ))
 echo with $nevents events each for a total of $total_dirs directories and $total_events events.
 
-bash make_proc_card.sh $mass_start $mass_end
+bash make_proc_card.sh $nevents $mass_start $mass_end $mass_increment $decay_start $decay_end $decay_increment $model_dir $proc_card_name
 
 echo Running MadGraph with $proc_card_name.
 mg5_aMC $proc_card_name > mg5.log
 
-echo MadGraph generation completed. Starting hadroniztion in the following directories:
+echo MadGraph generation completed. See mg5.log for more info.
+echo Starting hadroniztion in the following directories:
 ls $PWD/$mg_dir/Events
 
 for ((mass=$mass;mass<=mass_end;mass=$mass+100)); do
