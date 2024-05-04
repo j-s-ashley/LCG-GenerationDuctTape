@@ -10,12 +10,12 @@ mass_end=500
 mass_increment=100
 mass=$mass_start
 
-decay_start=1
-decay_end=1
-decay_increment=1
-decay=$decay_start
+lifetime_start=1
+lifetime_end=1
+lifetime_increment=1
+lifetime=$lifetime_start
 
-run_dir='smu'$mass'gev'$decay'ns'
+run_dir='smu'$mass'gev'$lifetime'ns'
 
 mg_dir_name='PROC_RPVMSSM_UFO_'
 mg_dir_i=0
@@ -32,15 +32,15 @@ git clone $model_repo
 echo Cloning complete. Creating $proc_card_name with
 printf '%s\n' "	Inital mass     = $mass_start GeV"
 printf '%s\n' "	Final mass      = $mass_end GeV"
-printf '%s\n' "	Inital lifetime = $decay ns"
-printf '%s\n' "	Final lifetime  = $decay ns"
+printf '%s\n' "	Inital lifetime = $lifetime ns"
+printf '%s\n' "	Final lifetime  = $lifetime ns"
 mass_dirs=$(( ( mass_end - mass_start ) / mass_increment + 1 ))
-decay_dirs=$(( ( decay_end - decay_start ) / decay_increment + 1 ))
-total_dirs=$(( mass_dirs * decay_dirs ))
+lifetime_dirs=$(( ( lifetime_end - lifetime_start ) / lifetime_increment + 1 ))
+total_dirs=$(( mass_dirs * lifetime_dirs ))
 total_events=$(( total_dirs * nevents ))
 echo with $nevents events each for a total of $total_dirs directories and $total_events events.
 
-bash make_proc_card.sh $nevents $mass_start $mass_end $mass_increment $decay_start $decay_end $decay_increment $model_dir $proc_card_name
+bash make_proc_card.sh $nevents $mass_start $mass_end $mass_increment $lifetime_start $lifetime_end $lifetime_increment $model_dir $proc_card_name
 
 echo Running MadGraph with $proc_card_name.
 mg5_aMC $proc_card_name > mg5.log
@@ -50,7 +50,7 @@ echo Starting hadroniztion in the following directories:
 ls $PWD/$mg_dir/Events
 
 for ((mass=$mass;mass<=mass_end;mass=$mass+100)); do
-       	run_dir='smu'$mass'gev'$decay'ns'
+       	run_dir='smu'$mass'gev'$lifetime'ns'
 	full_run_dir=$PWD/$mg_dir/Events/$run_dir
        	gunzip $full_run_dir/unweighted_events.lhe.gz
 	echo $run_dir LHEF unzipped.

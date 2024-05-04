@@ -9,15 +9,15 @@ mass_increment=$4
 mass=$mass_start
 
 # This section is mostly a placeholder. Decay range coming soon.
-decay_start=$5
-decay_end=$6
-decay_increment=$7
-decay=$decay_start
+lifetime_start=$5
+lifetime_end=$6
+lifetime_increment=$7
+lifetime=$lifetime_start
 
 model_dir=$8
 proc_card_name=$9
 
-run_dir='smu'$mass'gev'$decay'ns'
+run_dir='smu'$mass'gev'$lifetime'ns'
 # --- End of Header --- #
 
 touch $proc_card_name
@@ -37,7 +37,7 @@ echo set decay 2000013 6.500000e-15 >> $proc_card_name
 
 #TODO Add decay range functionality
 for ((mass=$mass_start+100;mass<=mass_end;mass=$mass+100)); do
-	run_dir='smu'$mass'gev'$decay'ns'
+	run_dir='smu'$mass'gev'$lifetime'ns'
 	echo launch -n $dir_name >> $proc_card_name
 	echo set mass 1000013 $mass >> $proc_card_name
 	echo set mass 2000013 $mass >> $proc_card_name
