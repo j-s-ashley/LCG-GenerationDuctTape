@@ -3,7 +3,7 @@
 # --- Header --- #
 nevents=3
 model_repo='https://github.com/lawrenceleejr/DVMuReint.git'
-model_dir='DVMuReint/RPVMSSM_UFO/RPVMSSM_UFO/'
+model_dir="$PWD/DVMuReint/RPVMSSM_UFO/RPVMSSM_UFO/"
 
 mass_start=300
 mass_end=500
