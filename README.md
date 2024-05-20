@@ -2,7 +2,7 @@
 
 This repo currently contains an exact replica of the files located in the [data generation directory of the LLP_Sleptons_RPV_SUSY repository](https://github.com/A-A-Abdelhamid/LLP_Sleptons_RPV_SUSY/blob/secondary/generate_events/). Eventually, it will be updated to be more suitable to generic applications. For now, this works, which is better than the twiki can give you. 
 
-(Also, all the links below go to that repo. Those will be changed in the next push, promise.)
+(Also, all the links below go to that repo. Those will be changed in the pull request, promise.)
 
 ## Instantiation
 
