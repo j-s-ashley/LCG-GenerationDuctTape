@@ -1,6 +1,16 @@
 # Generation via MadGraph and Pythia using LCG
 
-This process is currently under parallel development in the [secondary branch of the LLP_Sleptons_RPV_SUSY repo](https://github.com/A-A-Abdelhamid/LLP_Sleptons_RPV_SUSY/blob/secondary/) and is still in its alpha testing stage.
+## Status
+
+This process was originally developed in the [secondary branch of the LLP_Sleptons_RPV_SUSY repo](https://github.com/A-A-Abdelhamid/LLP_Sleptons_RPV_SUSY/blob/secondary/) and is still in its beta testing stage.
+
+So far, everything seems to be working well there. [Generalization](https://github.com/j-s-ashley/LCG-GenerationDuctTape/issues/2) is currently underway and should be completed by August 2024. Please feel free to [open new issues](https://github.com/j-s-ashley/LCG-GenerationDuctTape/issues/new) if use-case-specific bugs arise.
+
+That warning being given...
+
+## Big Datasets with Big Computing Clusters!
+
+If you're trying to get CERN to run your collision simulation via MadGraph AND use Pythia for showering, this process should work for you. It's designed to run a single process over a range of lifetimes and/or masses for a specific particle, so single lifetime/mass collisions would find this to be a little overkill.
 
 ## Instantiation
 
